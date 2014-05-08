@@ -1,6 +1,14 @@
-### LOAD REQUIRED PACKAGES
-library(data.table)
+###--------------------------------------------------------------
+###  plot1.R:
+###     Creates a histogram of Household Global Active Power
+###
+###  Date          By           Notes
+###  2014-05-07   saoconnell    Initial development
+###--------------------------------------------------------------
+
+## CLEANUP THE WORK SPACE
 rm(list=ls())
+
 ###  SET THE WORKING DIRECTORY
 setwd("~/Documents/workspace/coursera/Data_Science/Exploratory_Data_Analysis/assignment_one/ExData_Plotting1")
 
@@ -29,4 +37,5 @@ hist(plot_data$Global_active_power,
      main="Global Active Power",
      xlab="Global Active Power(kilowatts)"
      )
+
 dev.off()
