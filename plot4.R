@@ -27,7 +27,7 @@ in_data$Sub_metering_2 <- as.numeric(in_data$Sub_metering_2)
 ## CREATE A POSIX DATE FOR SUBSETTING
 in_data$POSIX <- as.POSIXct(strptime(paste(in_data$Date, in_data$Time), format="%d/%m/%Y %H:%M:%S"))
 
-
+# 
 ### SUBSET DATA 
 plot_data <- subset(in_data, POSIX >= as.POSIXct("2007-02-01") & POSIX < as.POSIXct("2007-02-03") )
 summary(plot_data)
@@ -41,7 +41,6 @@ par(mfrow = c(2,2))
 par(cex = .83) 
 par(cex.axis = .7)
 par(cex.lab = .7)
-
 
 ### Plot1: Global Active power, placement: Row=1 Col=1
 plot(plot_data$POSIX, plot_data$Global_active_power, 
@@ -70,13 +69,14 @@ plot(plot_data$POSIX, plot_data$Sub_metering_1,
 lines(plot_data$POSIX, plot_data$Sub_metering_1, col='black')
 lines(plot_data$POSIX, plot_data$Sub_metering_2, col='red')
 lines(plot_data$POSIX, plot_data$Sub_metering_3, col='blue')
-legend(as.POSIXct("2007-02-01 17:00:00"), 39, 
+legend(as.POSIXct("2007-02-01 17:00:00"), 40, 
        lty=c(1,1,1),
        col = c("black", "red", "blue"), 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       cex=.8,
+       cex=.75,
+       y.intersp=.6,
        bty='n',
-       seg.len=4)
+       seg.len=3)
        
 ### Plot4: Global reactive power, placement: Row=2 Col=2
 plot(plot_data$POSIX, plot_data$Global_reactive_power, 
@@ -89,4 +89,3 @@ plot(plot_data$POSIX, plot_data$Global_reactive_power,
 dev.copy(png, filename='plot4.png', width = 480, height = 480)
 
 dev.off()
-
